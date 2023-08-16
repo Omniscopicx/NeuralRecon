@@ -28,7 +28,7 @@ parser.add_argument('opts',
 args = parser.parse_args()
 update_config(cfg, args)
 
-if not os.path.exists(os.path.join(cfg.TEST.PATH, 'SyncedPoses.txt')):
+if not (os.path.exists(os.path.join(cfg.TEST.PATH, 'SyncedPoses.txt')) or os.path.exists(os.path.join(cfg.TEST.PATH,'fragments.pkl'))):
     logger.info("First run on this captured data, start the pre-processing...")
     process_data(cfg.TEST.PATH)
 else:
